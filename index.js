@@ -217,10 +217,10 @@ class Ghost {
             }
         }
         if (this.isLeft) {
-            this.angle += 0.1 * dt;
+            this.angle -= 0.1 * dt;
         }
         if (this.isRight) {
-            this.angle -= 0.1 * dt;
+            this.angle += 0.1 * dt;
         }
         // if (this.isUp) {
         //     this.dy = -14
