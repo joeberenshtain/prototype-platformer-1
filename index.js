@@ -187,41 +187,44 @@ class Ghost {
     }
     update(dt) {
         if (this.sitting) {
-            this.sitting = false
-            if (this.isUp) {
-                if (this.isLeft) {
-                    this.angle = 3.0 * Math.PI / 4.0;
-                }
-                else if (this.isRight) {
-                    this.angle = Math.PI / 4.0;
-                }
-                else this.angle = Math.PI / 2.0;
-            } else if (this.isDown) {
-                if (this.isLeft) {
-                    this.angle = -3.0 * Math.PI / 4.0;
-                }
-                else if (this.isRight) {
-                    this.angle = -Math.PI / 4.0;
-                }
-                else this.angle = -Math.PI / 2.0;
-            } else {
-                if (this.isLeft) {
-                    this.angle = -Math.PI ;
-                }
-                else if (this.isRight) {
-                    this.angle = 0;
-                }
-                else {
-                    this.sitting = true;
-                }
+            this.sitting = !(this.isUp || this.isDown || this.isLeft || this.isRight)
+
+        }
+        if (this.isUp) {
+            if (this.isLeft) {
+                this.angle = -3.0 * Math.PI / 4.0;
+            }
+            else if (this.isRight) {
+                this.angle =- Math.PI / 4.0;
+            }
+            else this.angle = -Math.PI / 2.0;
+        } else if (this.isDown) {
+            if (this.isLeft) {
+                this.angle = 3.0 * Math.PI / 4.0;
+            }
+            else if (this.isRight) {
+                this.angle = Math.PI / 4.0;
+            }
+            else this.angle = Math.PI / 2.0;
+        } else {
+            if (this.isLeft) {
+                this.angle = Math.PI ;
+            }
+            else if (this.isRight) {
+                this.angle = 0;
+            }
+            else {
+                //this.sitting = true;
             }
         }
-        if (this.isLeft) {
-            this.angle -= 0.1 * dt;
-        }
-        if (this.isRight) {
-            this.angle += 0.1 * dt;
-        }
+        // if (this.isLeft) {
+        //     this.angle -= 0.1 * dt;
+        // }
+        // if (this.isRight) {
+        //     this.angle += 0.1 * dt;
+        // }
+
+
         // if (this.isUp) {
         //     this.dy = -14
         // } else if (this.isDown) {
